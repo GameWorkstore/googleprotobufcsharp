@@ -24,27 +24,27 @@ namespace Main {
     static PrReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cghwci5wcm90bxIEbWFpbiIeCgpOZXdNZXNzZWdlEhAKCE5ld0ZpZWxkGAEg",
-            "ASgJQgpIA1oGLi9tYWluYgZwcm90bzM="));
+            "Cghwci5wcm90bxIEbWFpbiIdCglEVE1lc3NlZ2USEAoITmV3RmllbGQYASAB",
+            "KAlCCkgDWgYuL21haW5iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Main.NewMessege), global::Main.NewMessege.Parser, new[]{ "NewField" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Main.DTMessege), global::Main.DTMessege.Parser, new[]{ "NewField" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class NewMessege : pb::IMessage<NewMessege>
+  public sealed partial class DTMessege : pb::IMessage<DTMessege>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<NewMessege> _parser = new pb::MessageParser<NewMessege>(() => new NewMessege());
+    private static readonly pb::MessageParser<DTMessege> _parser = new pb::MessageParser<DTMessege>(() => new DTMessege());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<NewMessege> Parser { get { return _parser; } }
+    public static pb::MessageParser<DTMessege> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -57,21 +57,21 @@ namespace Main {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NewMessege() {
+    public DTMessege() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NewMessege(NewMessege other) : this() {
+    public DTMessege(DTMessege other) : this() {
       newField_ = other.newField_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public NewMessege Clone() {
-      return new NewMessege(this);
+    public DTMessege Clone() {
+      return new DTMessege(this);
     }
 
     /// <summary>Field number for the "NewField" field.</summary>
@@ -87,11 +87,11 @@ namespace Main {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as NewMessege);
+      return Equals(other as DTMessege);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(NewMessege other) {
+    public bool Equals(DTMessege other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -158,7 +158,7 @@ namespace Main {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(NewMessege other) {
+    public void MergeFrom(DTMessege other) {
       if (other == null) {
         return;
       }

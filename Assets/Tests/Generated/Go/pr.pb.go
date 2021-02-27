@@ -25,7 +25,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-type NewMessege struct {
+type DTMessege struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -33,8 +33,8 @@ type NewMessege struct {
 	NewField string `protobuf:"bytes,1,opt,name=NewField,proto3" json:"NewField,omitempty"`
 }
 
-func (x *NewMessege) Reset() {
-	*x = NewMessege{}
+func (x *DTMessege) Reset() {
+	*x = DTMessege{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_pr_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -42,13 +42,13 @@ func (x *NewMessege) Reset() {
 	}
 }
 
-func (x *NewMessege) String() string {
+func (x *DTMessege) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NewMessege) ProtoMessage() {}
+func (*DTMessege) ProtoMessage() {}
 
-func (x *NewMessege) ProtoReflect() protoreflect.Message {
+func (x *DTMessege) ProtoReflect() protoreflect.Message {
 	mi := &file_pr_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -60,12 +60,12 @@ func (x *NewMessege) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NewMessege.ProtoReflect.Descriptor instead.
-func (*NewMessege) Descriptor() ([]byte, []int) {
+// Deprecated: Use DTMessege.ProtoReflect.Descriptor instead.
+func (*DTMessege) Descriptor() ([]byte, []int) {
 	return file_pr_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *NewMessege) GetNewField() string {
+func (x *DTMessege) GetNewField() string {
 	if x != nil {
 		return x.NewField
 	}
@@ -76,10 +76,10 @@ var File_pr_proto protoreflect.FileDescriptor
 
 var file_pr_proto_rawDesc = []byte{
 	0x0a, 0x08, 0x70, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x6d, 0x61, 0x69, 0x6e,
-	0x22, 0x28, 0x0a, 0x0a, 0x4e, 0x65, 0x77, 0x4d, 0x65, 0x73, 0x73, 0x65, 0x67, 0x65, 0x12, 0x1a,
-	0x0a, 0x08, 0x4e, 0x65, 0x77, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x4e, 0x65, 0x77, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x42, 0x0a, 0x48, 0x03, 0x5a, 0x06,
-	0x2e, 0x2f, 0x6d, 0x61, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x27, 0x0a, 0x09, 0x44, 0x54, 0x4d, 0x65, 0x73, 0x73, 0x65, 0x67, 0x65, 0x12, 0x1a, 0x0a,
+	0x08, 0x4e, 0x65, 0x77, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x08, 0x4e, 0x65, 0x77, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x42, 0x0a, 0x48, 0x03, 0x5a, 0x06, 0x2e,
+	0x2f, 0x6d, 0x61, 0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -96,7 +96,7 @@ func file_pr_proto_rawDescGZIP() []byte {
 
 var file_pr_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_pr_proto_goTypes = []interface{}{
-	(*NewMessege)(nil), // 0: main.NewMessege
+	(*DTMessege)(nil), // 0: main.DTMessege
 }
 var file_pr_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -113,7 +113,7 @@ func file_pr_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_pr_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NewMessege); i {
+			switch v := v.(*DTMessege); i {
 			case 0:
 				return &v.state
 			case 1:

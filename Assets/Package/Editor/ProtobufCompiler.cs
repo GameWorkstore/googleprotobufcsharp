@@ -79,7 +79,7 @@ namespace GameWorkstore.Google.Protobuf
 
         private static ProtobufConfig GetProtobufConfig()
         {
-            var finds = AssetDatabase.FindAssets("t:GoogleProtobufConfig");
+            var finds = AssetDatabase.FindAssets("t:ProtobufConfig");
             var paths = finds.Select(guid => AssetDatabase.GUIDToAssetPath(guid));
             var selects = paths.Select(path => AssetDatabase.LoadAssetAtPath<ProtobufConfig>(path));
             return selects.FirstOrDefault();
