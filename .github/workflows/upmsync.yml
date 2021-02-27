@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - 'main'
-  pull_request:
-    branches:
-      - 'main'
   workflow_dispatch:
 jobs:
   build:
@@ -31,7 +28,6 @@ jobs:
               cp -f README.md Assets/Package/README.md
               git add --a
               git commit -m "Updated README.md"
-              echo "::set-output name=required::true"
           else
               echo "::set-output name=required::false"
           fi
