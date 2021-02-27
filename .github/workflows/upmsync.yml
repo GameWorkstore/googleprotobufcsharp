@@ -22,6 +22,7 @@ jobs:
         id: updated
         run: |
           echo ${{ github.ref }}
+          cmp --help
           READMECMP=`cmp README.md Assets/Package/README.md`
           echo $READMECMP
           exit 0
@@ -34,13 +35,6 @@ jobs:
           else
               echo "::set-output name=required::false"
           fi
-
-      - name: Push changes
-        if: false
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
 
       - name: Cook UPM
         if: false
