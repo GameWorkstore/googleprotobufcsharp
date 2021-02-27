@@ -19,18 +19,14 @@ jobs:
         id: updated
         run: |
           echo ${{ github.ref }}
-          cmp --help
-          cmp README.md Assets/Package/README.md
-          exit 0
-          READMECMP=`cmp README.md Assets/Package/README.md`
-          echo $READMECMP
-          exit 0
-          if [ -n "$READMECMP" ]
+          if ! cmp --silent "README.md" "Assets/Package/README.md";
           then
+              echo "different"
               cp -f README.md Assets/Package/README.md
               git add --a
               git commit -m "Updated README.md"
           else
+              echo "same"
               echo "::set-output name=required::false"
           fi
 
