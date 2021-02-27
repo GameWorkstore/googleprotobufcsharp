@@ -15,19 +15,13 @@ jobs:
           git config --local user.name "game-workstore-bot"
           sudo apt-get install diffutils
       
-      - name: Update internals
-        id: updated
+      - name: Update README
         run: |
-          echo ${{ github.ref }}
-          if ! cmp --silent "README.md" "Assets/Package/README.md";
-          then
+          if ! cmp --silent "README.md" "Assets/Package/README.md"; then
               echo "different"
               cp -f README.md Assets/Package/README.md
               git add --a
               git commit -m "Updated README.md"
-          else
-              echo "same"
-              echo "::set-output name=required::false"
           fi
 
       - name: Cook UPM
