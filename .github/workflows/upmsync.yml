@@ -20,6 +20,8 @@ jobs:
         run: |
           echo ${{ github.ref }}
           cmp --help
+          cmp README.md Assets/Package/README.md
+          exit 0
           READMECMP=`cmp README.md Assets/Package/README.md`
           echo $READMECMP
           exit 0
