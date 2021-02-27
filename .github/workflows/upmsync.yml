@@ -22,6 +22,7 @@ jobs:
               cp -f README.md Assets/Package/README.md
               git add --a
               git commit -m "Updated README.md"
+              git push origin
           fi
 
       - name: Cook UPM
