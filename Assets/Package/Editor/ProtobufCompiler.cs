@@ -59,13 +59,13 @@ namespace GameWorkstore.Google.Protobuf
                 if (string.IsNullOrEmpty(PackagePath))
                 {
                     var libraryPath = Directory.GetDirectories("Library/PackageCache/").FirstOrDefault(IsPackagePath);
-                    if (string.IsNullOrEmpty(PackagePath))
+                    if (string.IsNullOrEmpty(libraryPath))
                     {
-                        PackagePath = Application.dataPath + "/Package/" + ProtocRelativePath;
+                        PackagePath = Path.Combine(Application.dataPath, "Package", ProtocRelativePath);
                     }
                     else
                     {
-                        PackagePath = Application.dataPath + "/../" + libraryPath + "/" + ProtocRelativePath;
+                        PackagePath = Path.Combine(Directory.GetParent(Application.dataPath).FullName, libraryPath, ProtocRelativePath);
                     }
                 }
                 return PackagePath;
@@ -77,11 +77,11 @@ namespace GameWorkstore.Google.Protobuf
             return path.Contains(PackageName);
         }
 
-        private static GoogleProtobufConfig GetProtobufConfig()
+        private static ProtobufConfig GetProtobufConfig()
         {
             var finds = AssetDatabase.FindAssets("t:GoogleProtobufConfig");
             var paths = finds.Select(guid => AssetDatabase.GUIDToAssetPath(guid));
-            var selects = paths.Select(path => AssetDatabase.LoadAssetAtPath<GoogleProtobufConfig>(path));
+            var selects = paths.Select(path => AssetDatabase.LoadAssetAtPath<ProtobufConfig>(path));
             return selects.FirstOrDefault();
         }
 
@@ -221,7 +221,7 @@ namespace GameWorkstore.Google.Protobuf
 
         private static readonly List<ProtobufCompilerConfig> configs = new List<ProtobufCompilerConfig>();
 
-        public static IEnumerable<ProtobufCompilerConfig> GetCompilerConfigs(GoogleProtobufConfig config)
+        public static IEnumerable<ProtobufCompilerConfig> GetCompilerConfigs(ProtobufConfig config)
         {
             configs.Clear();
             if (config.CSharpCompilerEnabled)
@@ -249,6 +249,7 @@ namespace GameWorkstore.Google.Protobuf
         public const string ProtobufTemplate =
             "syntax = \"proto3\";\n" +
             "option optimize_for = LITE_RUNTIME;\n" +
+            "option go_package = \"./ main\";"+
             "\n" +
             "package main;\n" +
             "\n" +
@@ -257,13 +258,21 @@ namespace GameWorkstore.Google.Protobuf
             "   string NewField = 1;\n" +
             "}\n";
 
-        [MenuItem("Assets/Create/Protobuf (.proto)")]
+        [MenuItem("Assets/Create/Protobuf/Protobuf (.proto)")]
         public static void CreateProtobufFile()
         {
-            var path = AssetDatabase.GetAssetPath(Selection.activeObject);
-            path += "/NewProtobuf.proto";
-
-            ProjectWindowUtil.CreateAssetWithContent(path, ProtobufTemplate);
+            var target = AssetDatabase.GetAssetPath(Selection.activeObject);
+            if (AssetDatabase.IsValidFolder(target))
+            {
+                var path = target + "/newprotobuf.proto";
+                ProjectWindowUtil.CreateAssetWithContent(path, ProtobufTemplate);
+            }
+            else if (File.Exists(target))
+            {
+                target = target.Remove(target.LastIndexOf(Path.DirectorySeparatorChar));
+                var path = target + "/newprotobuf.proto";
+                ProjectWindowUtil.CreateAssetWithContent(path, ProtobufTemplate);
+            }
         }
     }
 }

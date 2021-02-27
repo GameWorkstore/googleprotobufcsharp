@@ -4,7 +4,7 @@ option go_package = "./main";
 
 package main;
 
-message NewMessege
+message DTMessege
 {
    string NewField = 1;
 }
