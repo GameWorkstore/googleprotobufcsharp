@@ -31,7 +31,7 @@ for update package for a newer version, install UpmGitExtension and update on [ 
 
 The installed version of protoc is Windows 64 bits.
 
-# Protobuf Config
+# Configuration
 
 There are two modes of configuration:
 
