@@ -1,8 +1,7 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace GameWorkstore.Google.Protobuf
+namespace Google.Protobuf.Editor
 {
     public static class ProtobufPreferences
     {
@@ -68,4 +67,3 @@ namespace GameWorkstore.Google.Protobuf
         }
     }
 }
-#endif

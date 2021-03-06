@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Google.Protobuf.Config
 {
-    [CreateAssetMenu(fileName = "GoogleProtobufConfig", menuName = "GoogleProtobuf/GoogleProtobufConfig")]
-    public class GoogleProtobufConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "ProtobufConfig", menuName = "Protobuf/ProtobufConfig")]
+    public class ProtobufConfig : ScriptableObject
     {
         public bool ProtocolCompilerEnabled = true;
 

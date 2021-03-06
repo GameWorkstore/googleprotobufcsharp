@@ -1,10 +1,14 @@
 syntax = "proto3";
 option optimize_for = LITE_RUNTIME;
-option go_package = "./main";
-
+option go_package = "package;main";
 package main;
 
 message NewMessege
 {
    string NewField = 1;
+}
+
+message AnotherMessege
+{
+   string NewField = 2;
 }

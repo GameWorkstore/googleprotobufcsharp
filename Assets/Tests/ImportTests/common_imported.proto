@@ -1,0 +1,9 @@
+syntax = "proto3";
+option optimize_for = LITE_RUNTIME;
+option go_package = "package;main";
+package main;
+
+message UsesCommon
+{
+   string IntRange = 1;
+}
