@@ -20,12 +20,11 @@ To do this:
 # How to install
 
 At package.json, add these line of code:
-> "com.gameworkstore.googleprotobufunity": "git://github.com/GameWorkstore/google-protobuf-unity"
+> "com.gameworkstore.googleprotobufunity": "git://github.com/GameWorkstore/google-protobuf-unity#3.15.2005"
 
 And wait for unity to download and compile the package.
 
-for update package for a newer version, install UpmGitExtension and update on [ Window > Package Manager ]!
-> https://github.com/mob-sakai/UpmGitExtension
+for update package for a newer version, update end of line from 3.15.2005 to any released version on Releases.
 
 # Preinstalled Protoc
 
