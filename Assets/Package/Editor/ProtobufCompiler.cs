@@ -12,8 +12,10 @@ namespace Google.Protobuf.Editor
         private const string PackageName = "com.gameworkstore.googleprotobufunity";
 #if UNITY_EDITOR_OSX
         private const string ProtocRelativePath = "Protoc/MacOS/protoc";
+        private const string GrpcRelativePath = "Protoc/MacOS/grpc";
 #else
         private const string ProtocRelativePath = "Protoc/Win/protoc.exe";
+        private const string GrpcRelativePath = "Protoc/MacOS/grpc";
 #endif
 
         private const string ProtobufCompilerLog = "[" + nameof(ProtobufCompiler) + "]:";
@@ -42,24 +44,45 @@ namespace Google.Protobuf.Editor
             }
         }
 
-        private static string PackagePath = string.Empty;
+        private static string ProtocLocalPath = string.Empty;
         private static string ProtocPath
         {
             get
             {
-                if (string.IsNullOrEmpty(PackagePath))
+                if (string.IsNullOrEmpty(ProtocLocalPath))
                 {
                     var libraryPath = Directory.GetDirectories("Library/PackageCache/").FirstOrDefault(IsPackagePath);
                     if (string.IsNullOrEmpty(libraryPath))
                     {
-                        PackagePath = Path.Combine(Application.dataPath, "Package", ProtocRelativePath);
+                        ProtocLocalPath = Path.Combine(Application.dataPath, "Package", ProtocRelativePath);
                     }
                     else
                     {
-                        PackagePath = Path.Combine(Directory.GetParent(Application.dataPath).FullName, libraryPath, ProtocRelativePath);
+                        ProtocLocalPath = Path.Combine(Directory.GetParent(Application.dataPath).FullName, libraryPath, ProtocRelativePath);
                     }
                 }
-                return PackagePath;
+                return ProtocLocalPath;
+            }
+        }
+
+        private static string GrpcLocalPath = string.Empty;
+        private static string GrpcPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(GrpcLocalPath))
+                {
+                    var libraryPath = Directory.GetDirectories("Library/PackageCache/").FirstOrDefault(IsPackagePath);
+                    if (string.IsNullOrEmpty(libraryPath))
+                    {
+                        GrpcLocalPath = Path.Combine(Application.dataPath, "Package", ProtocRelativePath);
+                    }
+                    else
+                    {
+                        GrpcLocalPath = Path.Combine(Directory.GetParent(Application.dataPath).FullName, libraryPath, GrpcRelativePath);
+                    }
+                }
+                return GrpcLocalPath;
             }
         }
 
@@ -149,7 +172,10 @@ namespace Google.Protobuf.Editor
         public static bool Compile(string absolutePath, ProtobufConfig protobufConfig)
         {
             if (!protobufConfig.ProtocolCompilerEnabled) return false;
-            if (!absolutePath.StartsWith(Application.dataPath))
+            //standalize path
+            var aPath = Path.GetFullPath(absolutePath);
+            var vPath = Path.GetFullPath(Application.dataPath);
+            if (!aPath.StartsWith(vPath))
             {
                 if (ProtobufPreferences.LogErrors)
                 {
